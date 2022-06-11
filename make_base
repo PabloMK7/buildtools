@@ -73,6 +73,12 @@
 # - ROMFS_DIR: Optional; Directory containing RomFS files.
 # - LOGO: Optional; Logo animation to use when launching the CIA/3DS.
 #     - Supported file types: BCMA.LZ
+# - USE_EXT_SAVEDATA: Optional; Use Extsavedata
+#     - Supported values: true, false
+#     - Default value: false
+# - EXT_SAVEDATA_ID: Optional; Extsavedata ID
+#     - Supported values: 4 byte hex value
+#     - Default value: Same as UNIQUE_ID
 #
 # Wii U:
 # - ICON: Application icon.
@@ -395,6 +401,8 @@ else ifeq ($(TARGET_OS),3ds)
     SYSTEM_MODE_EXT ?= Legacy
     CPU_SPEED ?= 268MHz
     ENABLE_L2_CACHE ?= false
+    USE_EXT_SAVEDATA ?= false
+    EXT_SAVEDATA_ID ?= $(UNIQUE_ID)
 
     _3DSXTOOL_FLAGS :=
     COMMON_MAKEROM_FLAGS := -rsf $(BUILDTOOLS_DIR)/3ds/template.rsf -target t -exefslogo -icon $(TARGET_BUILD_DIR)/icon.icn -banner $(TARGET_BUILD_DIR)/banner.bnr -major $(VERSION_MAJOR) -minor $(VERSION_MINOR) -micro $(VERSION_MICRO) -DAPP_TITLE="$(TITLE)" -DAPP_PRODUCT_CODE="$(PRODUCT_CODE)" -DAPP_UNIQUE_ID="$(UNIQUE_ID)" -DAPP_SYSTEM_MODE="$(SYSTEM_MODE)" -DAPP_SYSTEM_MODE_EXT="$(SYSTEM_MODE_EXT)" -DAPP_CATEGORY="$(CATEGORY)" -DAPP_USE_ON_SD="$(USE_ON_SD)" -DAPP_MEMORY_TYPE="$(MEMORY_TYPE)" -DAPP_CPU_SPEED="$(CPU_SPEED)" -DAPP_ENABLE_L2_CACHE="$(ENABLE_L2_CACHE)" -DAPP_VERSION_MAJOR="$(VERSION_MAJOR)"
