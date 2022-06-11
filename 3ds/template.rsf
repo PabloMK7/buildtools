@@ -29,7 +29,7 @@ AccessControlInfo:
 
   # ExtData
   UseExtSaveData                : $(USE_EXT_SAVEDATA) # enables ExtData       
-  #ExtSaveDataId                : $(EXT_SAVEDATA_ID) # only set this when the ID is different to the UniqueId
+  ExtSaveDataId                 : $(EXT_SAVEDATA_ID) # only set this when the ID is different to the UniqueId
 
   # FS:USER Archive Access Permissions
   # Uncomment as required
